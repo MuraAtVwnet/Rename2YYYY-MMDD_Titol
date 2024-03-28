@@ -14,7 +14,7 @@ foreach( $File in $Files ){
 		$TempTimeStamp = $Matches.TimeStamp
 
 		$Tempbody = $File.Name -replace $TempTimeStamp , ""
-		$body = $Tempbody -replace "^[ _-]*" , ""
+		$body = $Tempbody -replace "^[ _-]*" , ""	# replace の Bug ぽい動作回避
 
 		$TempTimeStamp = $TempTimeStamp -replace "^[ _-]*", ""
 		$TimeStamp = $TempTimeStamp -replace "[ _-]*$", ""
