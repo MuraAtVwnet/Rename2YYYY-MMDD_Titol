@@ -16,7 +16,7 @@ function Rename2YYYY-MMDD_Titol($Pattern, [switch]$WhatIf){
 	}
 
 	foreach( $File in $Files ){
-		if( $File.Name -match "(?<TimeStamp>[ _-]*[0-9]{4}\-[0-9]{4}[ _-]*?)"){
+		if( $File.Name -match "(?<TimeStamp>[ _-]*[0-9]{4,4}\-[0-9]{4,4}[ _-]*?)"){
 			$TempTimeStamp = $Matches.TimeStamp
 
 			$Tempbody = $File.Name -replace $TempTimeStamp , ""
@@ -28,7 +28,11 @@ function Rename2YYYY-MMDD_Titol($Pattern, [switch]$WhatIf){
 			$NewName = $TimeStamp + " " + $body
 
 			if( $File.Name -ne $NewName ){
-				Write-Output $File.FullName
+				$FileFullName = $File.FullName
+				$ParentPath = Split-Path $FileFullName -Parent
+				$OldName = Split-Path $FileFullName -Leaf
+				Write-Output $ParentPath
+				Write-Output $OldName
 				Write-Output $NewName
 				Write-Output " "
 
