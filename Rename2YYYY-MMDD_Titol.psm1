@@ -1,14 +1,19 @@
 ﻿##########################################################################
 # 「YYYY-MMDD」を含むファイル名を 「YYYY-MMDD タイトル」に Rename する
 ##########################################################################
-function Rename2YYYY-MMDD_Titol($Pattern, [switch]$WhatIf){
+function Rename2YYYY-MMDD_Titol($Pattern, [switch]$NoRecurse, [switch]$WhatIf){
 	if( $Pattern -eq $null ){
 		Write-Output "Path とパターンを入力してください"
 		return
 	}
 
 	try{
-		$Files = Get-ChildItem $Pattern -Recurse -ErrorAction Stop
+		if( $NoRecurse ){
+			$Files = Get-ChildItem $Pattern -ErrorAction Stop
+		}
+		else{
+			$Files = Get-ChildItem $Pattern -Recurse -ErrorAction Stop
+		}
 	}
 	catch{
 		Write-Output "$Pattern は正しいパターンではありません"

@@ -11,6 +11,8 @@ Rename2YYYY-MMDD フルパス\ファイルパータン
 例) C:\MTG_Memo 以下にある *.txt のうち YYYY-MMDD を含むファイル名を YYYY-MMDD タイトル.txt にリネームします
 Rename2YYYY-MMDD C:\MTG_Memo\*.txt
 
+-NoRecurse オプションを指定すると、再起検索しません(指定ディレクトリのみ対象とする)
+
 -WhatIf オプションを指定すると、リネーム対象と変更後のファイル名のみ表示します
 (意図しない Rename がされないか確認するテストモード)
 
